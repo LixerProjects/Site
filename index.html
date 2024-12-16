@@ -6,6 +6,11 @@
     <title>Lixer Projects</title>
     <link rel="icon" href="logo.png" type="image/png"> <!-- Добавляем иконку сайта -->
     <style>
+        @font-face {
+            font-family: 'Stratum2';
+            src: url('Stratum2.TTF') format('truetype'); /* Укажите путь к файлу шрифта */
+        }
+
         body {
             margin: 0;
             display: flex;
@@ -38,7 +43,7 @@
             max-width: 600px; /* Максимальная ширина */
             position: relative;
             z-index: 3; /* Устанавливаем слой выше */
-            margin: 100px auto; /* Центрируем контейнер и добавляем отступ сверху */
+            margin: 20px auto; /* Центрируем контейнер и добавляем отступ сверху */
         }
 
         .logo {
@@ -55,12 +60,12 @@
 
         .content h1 {
             margin: 0;
-            font-size: 24px;
-            color: rgb( 255, 255, 255); /* Цвет заголовка */
+            font-size: 2rem; /* Используем rem для адаптивности */
+            color: rgb(255, 255, 255); /* Цвет заголовка */
         }
 
         .content p {
-            font-size: 16px;
+            font-size: 1rem; /* Используем rem для адаптивности */
             color: rgb(231, 231, 231); /* Цвет текста */
             line-height: 1.5; /* Увеличиваем межстрочный интервал */
         }
@@ -72,7 +77,7 @@
         }
 
         .project-item:hover {
-            color: #FFBD1B; /* Цвет текста при наведении */
+            color: #c5c1b7; /* Цвет текста при наведении */
         }
 
         .collapsible {
@@ -84,7 +89,7 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 16px;
+            font-size: 1rem; /* Используем rem для адаптивности */
             border-radius: 5px;
             margin-top: 10px;
             transition: background-color 0.3s; /* Плавный переход цвета фона */
@@ -92,13 +97,13 @@
         }
 
         .collapsible:hover {
-            background-color: #6a4fbb; /* Цвет фона при наведении на кнопку */
+            background-color: #6a4fbb; /* Цвет ф она при наведении на кнопку */
         }
 
         .content-group {
             max-height: 0; /* Изначально скрываем контент */
             overflow: hidden; /* Скрываем переполнение */
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Плавный переход */
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* П лавный переход */
             opacity: 0; /* Изначально скрываем */
         }
 
@@ -110,7 +115,7 @@
             display: inline-block;
             padding: 5px 10px;
             border-radius: 5px;
-            color: white ; /* Цвет текста для языков */
+            color: white; /* Цвет текста для языков */
             margin: 5px; /* Отступы между языками */
         }
 
@@ -128,21 +133,21 @@
 
         p {
             font-family: "Stratum2";
-            font-size: 12px;
+            font-size: 0.75rem; /* Используем rem для адаптивности */
             font-variant: small-caps;
             text-align: center;
         }
 
         h1 {
             font-family: "Stratum2";
-            font-size: 24px;
+            font-size: 2rem; /* Используем rem для адаптивности */
             font-variant: titling-caps;
             text-align: center;
         }
 
         ul {
             font-family: "Stratum2";
-            font-size: 16px;
+            font-size: 1rem; /* Используем rem для адаптивности */
             font-variant: small-caps;
             text-align: center;
             color: rgb(255, 255, 255); /* Цвет текста */
@@ -151,33 +156,33 @@
         /* Адаптивные стили */
         @media (max-width: 768px) {
             .container {
-                margin: 20px; /* Уменьшаем отступы на мобильных устройствах */
+                margin: 10px; /* Уменьшаем отступы на мобильных устройствах */
             }
 
             .content h1 {
-                font-size: 20px; /* Уменьшаем размер заголовка */
+                font-size: 1.5rem; /* Уменьшаем размер заголовка */
             }
 
             .content p {
-                font-size: 14px; /* Уменьшаем размер текста */
+                font-size: 0.875rem; /* Уменьшаем размер текста */
             }
 
             .project-item {
-                font-size: 14px; /* Уменьшаем размер текста для проектов */
+                font-size: 0.875rem; /* Уменьшаем размер текста для проектов */
             }
 
             .collapsible {
-                font-size: 14px; /* Уменьшаем размер текста для кнопок */
+                font-size: 0.875rem; /* Уменьшаем размер текста для кнопок */
             }
         }
 
         @media (max-width: 480px) {
             .content h1 {
-                font-size: 18px; /* Дополнительное уменьшение для маленьких экранов */
+                font-size: 1.25rem; /* Дополнительное уменьшение для маленьких экранов */
             }
 
             .content p {
-                font-size: 12px; /* Дополнительное уменьшение для маленьких экранов */
+                font-size: 0.75rem; /* Дополнительное уменьшение для маленьких экранов */
             }
         }
     </style>
@@ -209,9 +214,9 @@
                 <li class="project-item">Sims 3 | Remake</li>
                 <li class="project-item">Moonzy X: Everlasting fog</li>
                 <li class="project-item">ZeonSDK</li>
-                <li class="project-item">Physya Audio Visualizer</li>
+                <li class="project-item">Physya Audio Visualizer </li>
                 <li class="project-item">LTF Texture Converter</li>
-                <li class="project-item">3L coding language | Programming for everyone!</li>
+                <li class="project-item ">3L coding language | Programming for everyone!</li>
             </ul>
             <h1>Мои друзья</h1>
             <button class="collapsible">Miefis</button>
@@ -219,7 +224,7 @@
                 <p>Мьефис - хороший парень, помогал мне не раз, советую, а еще он делает игру "It's a Journey".</p>
             </div>
             <button class="collapsible">Buffmack/Fedya Clapton/Russian Timer</button>
-            <div class=" content-group">
+            <div class="content-group">
                 <p>Сигма бро, ещкере. А без приколов, хороший пацан, музыку хорошую пишет, а вот мои любимые синглы, альбом - "Ответь мне", "It Did Satan".</p>
             </div>
             <button class="collapsible">Creo01</button>
