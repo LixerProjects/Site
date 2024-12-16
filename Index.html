@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lixer Projects</title>
+    <link rel="icon" href="logo.png" type="image/png"> <!-- Добавляем иконку сайта -->
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Изменяем направление на колонку */
+            align-items: stretch; /* Растягиваем по высоте */
+            overflow: auto; /* Позволяем прокрутку */
+            position: relative;
+            min-height: 100vh; /* Устанавливаем минимальную высоту */
+        }
+
+        /* Градиентный фон */
+        .gradient-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #091227, #162958, #335FCF, #F352B1, #FFBD1B);
+            z-index: 1; /* Устанавливаем слой ниже */
+        }
+
+
+        .nav-panel {
+            width: 200px; /* Ширина навигационной панели */
+            background-color: #333; /* Цвет фона панели */
+            color: white;
+            position: fixed; /* Фиксируем панель */
+            top: 0;
+            left: 0; /* Убираем скрытие за пределами экрана */
+            height: 100%;
+            transition: left 0.3s; /* Плавный переход */
+            z-index: 2; /* Устанавливаем слой выше фона */
+        }
+
+        .nav-panel.active {
+            left: 0; /* Выдвигаем панель */
+        }
+
+        .nav-panel h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .nav-panel button {
+            width: 100%;
+            padding: 10px;
+            background-color: #444;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nav-panel button:hover {
+            background-color: #afaeae; /* Цвет кнопки при наведении */
+        }
+
+        .container {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.295); /* Полупрозрачный белый фон */
+            padding: 20px; /* Уменьшаем отступы */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            width: 600px; /* Устанавливаем фиксированную ширину */
+            position: relative;
+            z-index: 3; /* Устанавливаем слой выше */
+            margin: 100px auto; /* Центрируем контейнер и добавляем отступ сверху */
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .content h1, .content p {
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Тень для заголовков и параграфов */
+        }
+
+        .content h1 {
+            margin: 0;
+            font-size: 24px;
+            color: rgb( 255, 255, 255); /* Цвет заголовка */
+        }
+
+        .content p {
+            font-size: 16px;
+            color: rgb(231, 231, 231); /* Цвет текста */
+            line-height: 1.5; /* Увеличиваем межстрочный интервал */
+        }
+
+        .project-item {
+            cursor: pointer;
+            color: rgb(255, 255, 255); /* Цвет текста для проектов */
+            transition: color 0.3s; /* Плавный переход цвета текста */
+        }
+
+        .project-item:hover {
+            color: #FFBD1B; /* Цвет текста при наведении */
+        }
+
+        .collapsible {
+            background-color: #5a3e9d;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s; /* Плавный переход цвета фона */
+            font-variant: small-caps;
+            font-family: "Stratum2";
+        }
+
+        .collapsible:hover {
+            background-color: #6a4fbb; /* Цвет фона при наведении на кнопку */
+        }
+
+        .content-group {
+            max-height: 0; /* Изначально скрываем контент */
+            overflow: hidden; /* Скрываем переполнение */
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Плавный переход */
+            opacity: 0; /* Изначально скрываем */
+        }
+
+        .content-group.show {
+            opacity: 1; /* Показываем при открытии */
+        }
+
+        .language {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white; /* Цвет текста для языков */
+            margin: 5px; /* Отступы между языками */
+        }
+
+        .python {
+            background: linear-gradient(90deg, #f6ca47, #4182b3); /* Градиент для Python */
+        }
+
+        .html {
+            background: linear-gradient(90deg, #E65732, #FF7B37); /* Градиент для HTML */
+        }
+
+        .clickteam {
+            background: linear-gradient(90deg, #B41928, #4B267A); /* Градиент для Clickteam Fusion 2.5 */
+        }
+
+        p {
+            font-family: "Stratum2";
+            font-size: 12px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Stratum2";
+            font-size: 24px;
+            font-variant: titling-caps;
+            text-align: center;
+        }
+
+        ul {
+            font-family: "Stratum2";
+            font-size: 16px;
+            font-variant: small-caps;
+            text-align: center;
+            color: rgb(255, 255, 255); /* Цвет текста */
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-background"></div>
+
+    <div class="container">
+        <div class="content">
+            <h1 id="welcome">Добро пожаловать!</h1>
+            <p>Я - Ликсер. Разработчик на платформе GameJolt, я русский. Мне 12 лет, изучаю 
+                <span class="language python">Python</span>, 
+                <span class="language clickteam">Clickteam Fusion 2.5</span>, 
+                <span class="language html">HTML</span>.
+            </p>
+            <h1>Пройдемся по моим проектам!</h1>
+            <ul>
+                <li class="project-item">The Night of Fear</li>
+                <li class="project-item">Portal: Delta</li>
+                <li class="project-item">Operation AI</li>
+                <li class="project-item">Historic Museum Robbery</li>
+                <li class="project-item">Deltarune: The Game of Buffons</li>
+                <li class="project-item">Friend Assistant</li>
+                <li class="project-item">NeoEngine</li>
+                <li class="project-item">Moon Light</li>
+                <li class="project-item">UpDash</li>
+                <li class="project-item">TaylonMi</li>
+                < li class="project-item">Sonic CD Engine Branch</li>
+                <li class="project-item">Sims 3 | Remake</li>
+                <li class="project-item">Moonzy X: Everlasting fog</li>
+                <li class="project-item">ZeonSDK</li>
+                <li class="project-item">Physya Audio Visualizer</li>
+                <li class="project-item">LTF Texture Converter</li>
+                <li class="project-item">3L coding language | Programming for everyone!</li>
+            </ul>
+            <h1>Мои друзья</h1>
+            <button class="collapsible">Miefis</button>
+            <div class="content-group">
+                <p>Мьефис - хороший парень, помогал мне не раз, советую, а еще он делает игру "It's a Journey".</p>
+            </div>
+            <button class="collapsible">Buffmack/Fedya Clapton/Russian Timer</button>
+            <div class="content-group">
+                <p>Сигма бро, ещкере. А без приколов, хороший пацан, музыку хорошую пишет, а вот мои любимые синглы, альбом - "Ответь мне", "It Did Satan".</p>
+            </div>
+            <button class="collapsible">Creo01</button>
+            <div class="content-group">
+                <p>Мой друг со второго класса. Вообще легенд очка, но столько дружим, а рассказать ничего не могу.</p>
+            </div>
+            <button class="collapsible">KukiOfficial</button>
+            <div class="content-group">
+                <p>Подарил мне два фона, делает хорошую игру, молодец! Куки, если читаешь, знай - ЭЩКЕРЕЕЕЕ.</p>
+            </div>
+            <p>_____________________________________________________________________________________________</p>
+            <p>Ну и спасибо моим родителям, сестре, двоюродной сестре, команде, да и другим друзьям за то, что поддерживают мои идеи!</p>
+        </div>
+    </div>
+
+    <script>
+        const collapsibles = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const contentGroup = this.nextElementSibling;
+                if (contentGroup.classList.contains("show")) {
+                    contentGroup.classList.remove("show");
+                    contentGroup.style.maxHeight = null;
+                    contentGroup.style.opacity = 0;
+                } else {
+                    contentGroup.classList.add("show");
+                    contentGroup.style.maxHeight = contentGroup.scrollHeight + "px";
+                    contentGroup.style.opacity = 1;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
