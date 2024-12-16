@@ -10,15 +10,16 @@
             margin: 0;
             display: flex;
             flex-direction: column; /* Изменяем направление на колонку */
-            align-items: stretch; /* Растягиваем по высоте */
+            align-items: center; /* Центрируем содержимое по горизонтали */
             overflow: auto; /* Позволяем прокрутку */
             position: relative;
             min-height: 100vh; /* Устанавливаем минимальную высоту */
+            font-family: "Stratum2", sans-serif; /* Устанавливаем шрифт по умолчанию */
         }
 
         /* Градиентный фон */
         .gradient-background {
-            position: absolute;
+            position: fixed; /* Фиксируем фон */
             top: 0;
             left: 0;
             width: 100%;
@@ -27,49 +28,14 @@
             z-index: 1; /* Устанавливаем слой ниже */
         }
 
-
-        .nav-panel {
-            width: 200px; /* Ширина навигационной панели */
-            background-color: #333; /* Цвет фона панели */
-            color: white;
-            position: fixed; /* Фиксируем панель */
-            top: 0;
-            left: 0; /* Убираем скрытие за пределами экрана */
-            height: 100%;
-            transition: left 0.3s; /* Плавный переход */
-            z-index: 2; /* Устанавливаем слой выше фона */
-        }
-
-        .nav-panel.active {
-            left: 0; /* Выдвигаем панель */
-        }
-
-        .nav-panel h2 {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .nav-panel button {
-            width: 100%;
-            padding: 10px;
-            background-color: #444;
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .nav-panel button:hover {
-            background-color: #afaeae; /* Цвет кнопки при наведении */
-        }
-
         .container {
             text-align: left;
             background: rgba(255, 255, 255, 0.295); /* Полупрозрачный белый фон */
             padding: 20px; /* Уменьшаем отступы */
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            width: 600px; /* Устанавливаем фиксированную ширину */
+            width: 90%; /* Устанавливаем ширину в процентах для адаптивности */
+            max-width: 600px; /* Максимальная ширина */
             position: relative;
             z-index: 3; /* Устанавливаем слой выше */
             margin: 100px auto; /* Центрируем контейнер и добавляем отступ сверху */
@@ -123,7 +89,6 @@
             margin-top: 10px;
             transition: background-color 0.3s; /* Плавный переход цвета фона */
             font-variant: small-caps;
-            font-family: "Stratum2";
         }
 
         .collapsible:hover {
@@ -145,7 +110,7 @@
             display: inline-block;
             padding: 5px 10px;
             border-radius: 5px;
-            color: white; /* Цвет текста для языков */
+            color: white ; /* Цвет текста для языков */
             margin: 5px; /* Отступы между языками */
         }
 
@@ -181,6 +146,39 @@
             font-variant: small-caps;
             text-align: center;
             color: rgb(255, 255, 255); /* Цвет текста */
+        }
+
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px; /* Уменьшаем отступы на мобильных устройствах */
+            }
+
+            .content h1 {
+                font-size: 20px; /* Уменьшаем размер заголовка */
+            }
+
+            .content p {
+                font-size: 14px; /* Уменьшаем размер текста */
+            }
+
+            .project-item {
+                font-size: 14px; /* Уменьшаем размер текста для проектов */
+            }
+
+            .collapsible {
+                font-size: 14px; /* Уменьшаем размер текста для кнопок */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 18px; /* Дополнительное уменьшение для маленьких экранов */
+            }
+
+            .content p {
+                font-size: 12px; /* Дополнительное уменьшение для маленьких экранов */
+            }
         }
     </style>
 </head>
@@ -221,7 +219,7 @@
                 <p>Мьефис - хороший парень, помогал мне не раз, советую, а еще он делает игру "It's a Journey".</p>
             </div>
             <button class="collapsible">Buffmack/Fedya Clapton/Russian Timer</button>
-            <div class="content-group">
+            <div class=" content-group">
                 <p>Сигма бро, ещкере. А без приколов, хороший пацан, музыку хорошую пишет, а вот мои любимые синглы, альбом - "Ответь мне", "It Did Satan".</p>
             </div>
             <button class="collapsible">Creo01</button>
